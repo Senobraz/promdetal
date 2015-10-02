@@ -2,6 +2,7 @@
 IncludeTemplateLangFile(__FILE__);
 
 $isMainPage = $APPLICATION->GetCurPage(false) === SITE_DIR;
+$isNews = strpos($APPLICATION->GetCurPage(false), "/news/") !== false ? true : false;
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -31,11 +32,14 @@ $isMainPage = $APPLICATION->GetCurPage(false) === SITE_DIR;
 <body class="<?= $isMainPage ? '' : 'inner' ?>">
 <? $APPLICATION->ShowPanel() ?>
 <div class="wrapper">
-    <header class="header__block">
+    <header class="<?= $isMainPage ? '' : 'inner' ?> header__block">
         <div class="gray-block"></div>
-        <div class="wrap">
-            <a href="<?= SITE_DIR ?>">
-                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/logo.png" alt="" class="logo"/>
+        <div class="wrap <?= $isMainPage ? '' : 'inner_top' ?>">
+            <a href="<?= SITE_DIR ?>" class="logo">
+                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/logo.png" alt="" />
+            </a>
+            <a href="<?= SITE_DIR ?>" class="logo-inner">
+                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/logo-inner.png" alt=""/>
             </a>
 
             <div class="header-info ov">
@@ -51,7 +55,7 @@ $isMainPage = $APPLICATION->GetCurPage(false) === SITE_DIR;
             </div>
         </div>
         <div class="wrap">
-            <div class="bottom">
+            <div class="<?= $isMainPage ? '' : 'inner__' ?>bottom">
                 <? $APPLICATION->IncludeComponent(
                     "bitrix:menu",
                     "top",
@@ -113,7 +117,10 @@ $isMainPage = $APPLICATION->GetCurPage(false) === SITE_DIR;
     <?php if ($isMainPage) : ?>
 
     <? else: ?>
-    <div class="wrap">
+    <?php if($isNews) : ?>
+    <div class="breadcrumbs-bg <?= $isNews ? 'breadcrumbs-bg_news' : ''?>"></div>
+    <?php endif ?>
+    <div class="wrap <?= $isNews ? 'wrap_news' : ''?>">
         <div class="content-block">
             <div class="breadcrumbs">
                 <? $APPLICATION->IncludeComponent(
@@ -127,8 +134,9 @@ $isMainPage = $APPLICATION->GetCurPage(false) === SITE_DIR;
                     false
                 ); ?>
             </div>
-            <h1><? $APPLICATION->ShowTitle(false) ?></h1>
+            <h1 class="<?= $isNews ? 'news__header' : ''?>"><? $APPLICATION->ShowTitle(false) ?></h1>
 
+            <?php if( $isNews == false ) : ?>
             <div class="row">
                 <div class="col-md-3">
                     <? $APPLICATION->IncludeComponent(
@@ -172,4 +180,5 @@ $isMainPage = $APPLICATION->GetCurPage(false) === SITE_DIR;
                     </div>
                 </div>
                 <div class="col-md-9">
+            <?php endif ?>
     <?php endif //if ($isMainPage) :?>

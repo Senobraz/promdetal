@@ -6,46 +6,68 @@ $APPLICATION->SetTitle("Наша команда");
     <h2>Наша команда</h2>
     <p>Основная продукция нашей организации: ИФС (Изолирующие фланцевые соединения), фланцы (в т.ч. по чертежам заказчика) заг</p>
 </div>
-<div class="inner-slider-block">
-    <div id="carousel-example-generic" data-ride="carousel" class="carousel inner-slide slide">
-        <!-- Wrapper for slides-->
-        <div role="listbox" class="carousel-inner">
-            <div class="item active">
-                <div class="quote-block clearfix">
-                    <div class="person-block">
-                        <div class="photo">
-                            <img src="assets/images/fake-photo.jpg" alt="" />
-                        </div>
-                        <div class="name">Антон Кучкаров</div>
-                        <div class="position">главный инженер</div><a href="#" class="btn btn-transparent">подробнее</a>
-                    </div>
-                    <div class="quote ov">
-                        <div class="inner">Основная продукция нашей организации: ИФС (Изолирующие фланцевые соединения), фланцы (в т.ч. по чертежам заказчика) заглушки фланцевые, применяемые в нефтяной и газовой промышленности. Данная продукция сопровождается Сертификатом Соответствия
-                            ГОСТ Р , Разрешением Ростехнадзора, паспортом изделия. Вся продукция проходит технический контроль, что гарантирует её качество и соответствие всем техническим условиям и стандартам.</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="quote-block clearfix">
-                    <div class="person-block">
-                        <div class="photo">
-                            <img src="assets/images/fake-photo.jpg" alt="" />
-                        </div>
-                        <div class="name">Антон Кучкаров</div>
-                        <div class="position">главный инженер</div><a href="#" class="btn btn-transparent">подробнее</a>
-                    </div>
-                    <div class="quote ov">
-                        <div class="inner">Основная продукция нашей организации: ИФС (Изолирующие фланцевые соединения), фланцы (в т.ч. по чертежам заказчика) заглушки фланцевые, применяемые в нефтяной и газовой промышленности. Данная продукция сопровождается Сертификатом Соответствия
-                            ГОСТ Р , Разрешением Ростехнадзора, паспортом изделия. Вся продукция проходит технический контроль, что гарантирует её качество и соответствие всем техническим условиям и стандартам.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Indicators-->
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-        </ol>
-    </div>
+<? $APPLICATION->IncludeComponent(
+	"bitrix:news.list", 
+	"slider_content", 
+	array(
+		"IBLOCK_TYPE" => "content",
+		"IBLOCK_ID" => "4",
+		"NEWS_COUNT" => "12",
+		"FIELD_CODE" => array(
+			0 => "PREVIEW_PICTURE",
+			1 => "",
+		),
+		"PROPERTY_CODE" => array(
+			0 => "JOB",
+			1 => "LINK",
+			2 => "",
+		),
+		"COMPONENT_TEMPLATE" => "slider_content",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_ORDER1" => "DESC",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER2" => "ASC",
+		"FILTER_NAME" => "",
+		"CHECK_DATES" => "Y",
+		"DETAIL_URL" => "",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "undefined",
+		"CACHE_TYPE" => "A",
+		"CACHE_TIME" => "36000000",
+		"CACHE_FILTER" => "N",
+		"CACHE_GROUPS" => "Y",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"SET_TITLE" => "N",
+		"SET_BROWSER_TITLE" => "N",
+		"SET_META_KEYWORDS" => "N",
+		"SET_META_DESCRIPTION" => "N",
+		"SET_LAST_MODIFIED" => "N",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+		"ADD_SECTIONS_CHAIN" => "N",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"PARENT_SECTION" => "",
+		"PARENT_SECTION_CODE" => "",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"PAGER_TEMPLATE" => ".default",
+		"DISPLAY_TOP_PAGER" => "N",
+		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"PAGER_TITLE" => "Новости",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"SET_STATUS_404" => "N",
+		"SHOW_404" => "N",
+		"MESSAGE_404" => ""
+	),
+	false
+); ?>
+<div class="content-wrap">
+    <p>Основная продукция нашей организации: ИФС (Изолирующие фланцевые соединения), фланцы (в т.ч. по чертежам заказчика) заг</p>
 </div>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

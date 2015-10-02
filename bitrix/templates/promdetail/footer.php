@@ -1,7 +1,9 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
     <?php if(!$isMainPage) : ?>
+            <?php if( $isNews == false ) : ?>
                 </div><!-- col-md-9 -->
             </div><!-- row -->
+            <?php endif ?>
         </div><!-- content-block -->
     </div><!-- wrap -->
     <?php endif ?>
